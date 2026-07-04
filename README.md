@@ -76,7 +76,7 @@ docker run \
 
 | Parameter | Value | Rationale |
 |---|---|---|
-| Embedding model | `text-embedding-004` (Gemini) | Free, 768-dim, strong retrieval quality |
+| Embedding model | `gemini-embedding-001` (Gemini) | Free, 3072-dim, strong retrieval quality |
 | Vector store | ChromaDB (local, cosine similarity) | Free, no API cost, persisted to disk |
 | Chunk size | 600 words | Fits most support articles in 1–2 chunks |
 | Overlap | 100 words (~17%) | Preserves context across section boundaries |
