@@ -68,7 +68,7 @@ docker run \
 4. Set `GEMINI_API_KEY` as environment variable.
 5. Mount a persistent volume at `/app` (preserves `chroma_db/`, `state.json`, `articles/`).
 
-**Link to job logs / last run:** _[fill in after deployment]_
+**Link to job logs / last run:** https://railway.com/project/b9f7cabd-06ee-4c0b-ba0d-0d6c31c1c72c/service/8fafb66d-4952-47df-8f4b-ebfa1ee417df?environment=production
 
 ---
 
