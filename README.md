@@ -44,19 +44,15 @@ python test_query.py "How do I add a YouTube video?"
 
 ## Run with Docker
 
-```bash
+\`\`\`bash
 docker build -t optibot .
 
-# One-shot sync (exits 0 on success)
-docker run \
-  -e GEMINI_API_KEY=AIzaSy-... \
-  -v $(pwd)/state.json:/app/state.json \
-  -v $(pwd)/articles:/app/articles \
-  -v $(pwd)/chroma_db:/app/chroma_db \
+docker run --env-file .env \
+  -e CHROMA_DIR=/app/data/chroma_db \
+  -e STATE_FILE=/app/data/state.json \
+  -v $(pwd)/data:/app/data \
   optibot
-```
-
-> ⚠️ Mount the `chroma_db` volume so embeddings persist between daily runs.
+\`\`\`
 
 ---
 
@@ -66,7 +62,8 @@ docker run \
 2. Create a **Cron Job** service on [Railway](https://railway.app) or [Render](https://render.com).
 3. Schedule: `0 2 * * *` (02:00 UTC daily).
 4. Set `GEMINI_API_KEY` as environment variable.
-5. Mount a persistent volume at `/app` (preserves `chroma_db/`, `state.json`, `articles/`).
+5. Set environment variables: `CHROMA_DIR=/data/chroma_db`, `STATE_FILE=/data/state.json`.
+6. Mount a persistent volume at `/data` (preserves `chroma_db/` and `state.json` between runs).
 
 **Link to job logs / last run:** https://railway.com/project/b9f7cabd-06ee-4c0b-ba0d-0d6c31c1c72c/service/8fafb66d-4952-47df-8f4b-ebfa1ee417df?environment=production
 
